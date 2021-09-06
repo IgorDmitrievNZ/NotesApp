@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Notes App</string>
+    <string name="note_number_1">1.</string>
+    <string name="note_number_2">2.</string>
+    <string name="note_number_3">3.</string>
+    <string name="note_number_4">4.</string>
+    <string name="descrription_1">wdjcwfjkefnerfnrujffffhgthgbtgh</string>
+    <string name="descrription_2">frfgrfrgnhgnktrgurknfue r3yhr3hr</string>
+    <string name="descrription_3">ejewowwpwppqpq dejnfjefef</string>
+    <string name="descrription_4">efeughu4gughur</string>
 </resources>
