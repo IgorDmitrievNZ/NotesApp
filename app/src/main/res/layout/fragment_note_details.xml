@@ -16,6 +16,7 @@
     <TextView
         android:id="@+id/note_description"
         android:layout_width="match_parent"
+        android:layout_margin="@dimen/default_padding"
         android:layout_height="wrap_content"
         tools:text="@string/descrription_1" />
 
@@ -23,6 +24,7 @@
         android:id="@+id/note_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_padding"
         tools:text="@string/descrription_2" />
 
 </LinearLayout>
