@@ -1,8 +1,6 @@
 package com.example.android.notesapp.ui.details;
 
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,26 +13,12 @@ import com.example.android.notesapp.R;
 import com.example.android.notesapp.domain.Note;
 import com.example.android.notesapp.ui.list.NotesListFragment;
 
-public class NoteDetailsFragment extends Fragment implements Parcelable {
+public class NoteDetailsFragment extends Fragment {
 
-    public static final Creator<NoteDetailsFragment> CREATOR = new Creator<NoteDetailsFragment>() {
-        @Override
-        public NoteDetailsFragment createFromParcel(Parcel in) {
-            return new NoteDetailsFragment(in);
-        }
-
-        @Override
-        public NoteDetailsFragment[] newArray(int size) {
-            return new NoteDetailsFragment[size];
-        }
-    };
     private static final String ARG_NOTE = "ARG_NOTE";
     private TextView noteName;
     private TextView noteDate;
     private TextView noteDescription;
-
-    protected NoteDetailsFragment(Parcel in) {
-    }
 
     public NoteDetailsFragment() {
         super(R.layout.fragment_note_details);
@@ -86,12 +70,5 @@ public class NoteDetailsFragment extends Fragment implements Parcelable {
         noteDescription.setText(note.getDescription());
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-    }
 }
