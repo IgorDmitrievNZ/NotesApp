@@ -8,4 +8,14 @@
     <string name="descrription_2">frfgrfrgnhgnktrgurknfue r3yhr3hr</string>
     <string name="descrription_3">ejewowwpwppqpq dejnfjefef</string>
     <string name="descrription_4">efeughu4gughur</string>
+    <string name="settings">Settings</string>
+    <string name="about_app">Information about App</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_drawer">Navigation Drawer</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="user_name">User Name</string>
+    <string name="user_info">User Info</string>
+    <string name="themes">Themes</string>
+    <string name="help">Help</string>
 </resources>
