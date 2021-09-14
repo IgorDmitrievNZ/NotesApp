@@ -3,8 +3,6 @@ package com.example.android.notesapp.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.StringRes;
-
 import java.util.Date;
 
 public class Note implements Parcelable {
@@ -20,30 +18,35 @@ public class Note implements Parcelable {
             return new Note[size];
         }
     };
-    @StringRes
-    private final int name;
-    @StringRes
-    private final int description;
+    private final String id;
+    private final String title;
+    private final String imageUrl;
     private final Date date;
 
-    public Note(int name, int description, Date date) {
-        this.name = name;
-        this.description = description;
+    public Note(String id, String title, String imageUrl, Date date) {
+        this.id = id;
+        this.title = title;
+        this.imageUrl = imageUrl;
         this.date = date;
     }
 
     protected Note(Parcel in) {
-        name = in.readInt();
-        description = in.readInt();
+        id = in.readString();
+        title = in.readString();
+        imageUrl = in.readString();
         date = (Date) in.readSerializable();
     }
 
-    public int getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public int getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public Date getDate() {
@@ -57,8 +60,9 @@ public class Note implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(name);
-        parcel.writeInt(description);
+        parcel.writeString(id);
+        parcel.writeString(title);
+        parcel.writeString(imageUrl);
         parcel.writeSerializable(date);
     }
 }

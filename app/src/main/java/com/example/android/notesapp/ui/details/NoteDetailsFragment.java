@@ -17,7 +17,6 @@ public class NoteDetailsFragment extends Fragment {
 
     private static final String ARG_NOTE = "ARG_NOTE";
     private TextView noteName;
-    private TextView noteDate;
     private TextView noteDescription;
 
     public NoteDetailsFragment() {
@@ -39,8 +38,6 @@ public class NoteDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         noteName = view.findViewById(R.id.note_name);
-
-        noteDate = view.findViewById(R.id.note_date);
 
         noteDescription = view.findViewById(R.id.note_description);
 
@@ -65,9 +62,8 @@ public class NoteDetailsFragment extends Fragment {
     }
 
     private void displayNote(Note note) {
-        noteName.setText(note.getName());
-        noteDate.setText(note.getDate().toString());
-        noteDescription.setText(note.getDescription());
+        noteName.setText(note.getTitle());
+        noteDescription.setText(note.getTitle());
     }
 
 

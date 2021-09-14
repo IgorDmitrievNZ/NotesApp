@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.notesapp.R;
 import com.example.android.notesapp.domain.DeviceNotesRepository;
@@ -24,7 +26,7 @@ public class NotesListFragment extends Fragment implements NotesListView {
     public static final String ARG_NOTE = "ARG_NOTE";
     private OnNoteClicked onNoteClicked;
     private NotesListPresenter presenter;
-    private LinearLayout container;
+    private NotesAdapter adapter = new NotesAdapter();
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -58,7 +60,14 @@ public class NotesListFragment extends Fragment implements NotesListView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        container = view.findViewById(R.id.base);
+        RecyclerView notesList = view.findViewById(R.id.notes_list);
+        notesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
+        notesList.setAdapter(adapter);
+
+        // Visual divider. Optional
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.bg_separator));
+        notesList.addItemDecoration(itemDecoration);
 
         presenter.requestNotes();
     }
@@ -66,29 +75,7 @@ public class NotesListFragment extends Fragment implements NotesListView {
     @Override
     public void showNotes(List<Note> notes) {
 
-        for (final Note note : notes) {
-
-            View noteItem = LayoutInflater.from(requireContext()).inflate(R.layout.item_note, container, false);
-
-            noteItem.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onNoteClicked != null) {
-                        onNoteClicked.onNoteClicked(note);
-                    }
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelable(ARG_NOTE, note);
-
-                    getParentFragmentManager().setFragmentResult(KEY_SELECTED_NOTE, bundle);
-                }
-            });
-
-            TextView noteName = noteItem.findViewById(R.id.note_name);
-
-            noteName.setText(note.getName());
-
-            container.addView(noteItem);
-        }
+        adapter.setNotes(notes);
     }
 
     public interface OnNoteClicked {

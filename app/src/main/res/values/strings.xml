@@ -18,4 +18,6 @@
     <string name="user_info">User Info</string>
     <string name="themes">Themes</string>
     <string name="help">Help</string>
+    <string name="delete_all">Delete All</string>
+    <string name="add_note">Add Note</string>
 </resources>
