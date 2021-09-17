@@ -12,14 +12,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.android.notesapp.R;
 import com.example.android.notesapp.domain.Note;
-import com.example.android.notesapp.ui.details.NoteDetailsFragment;
-import com.example.android.notesapp.ui.list.NotesListFragment;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NotesListFragment.OnNoteClicked {
+public class MainActivity extends AppCompatActivity implements RouterHolder {
 
     private static final String ARG_NOTE = "ARG_NOTE";
     private Note selectedNote;
+    private Router router = new Router(getSupportFragmentManager());
+
+    @Override
+    public Router getRouter() {
+        return router;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +69,11 @@ public class MainActivity extends AppCompatActivity implements NotesListFragment
 
         toolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.settings) {
-                Toast.makeText(MainActivity.this, "Settings!!!!!", Toast.LENGTH_SHORT).show();
+                router.showSettings();
                 return true;
             }
             if (item.getItemId() == R.id.about_app) {
-                Toast.makeText(MainActivity.this, "This is an awesome app", Toast.LENGTH_SHORT).show();
+                router.showInfo();
                 return true;
             }
             return false;
@@ -80,26 +84,6 @@ public class MainActivity extends AppCompatActivity implements NotesListFragment
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    @Override
-    public void onNoteClicked(Note note) {
-
-        selectedNote = note;
-
-        if (getResources().getBoolean(R.bool.isLandscape)) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container_landscape, NoteDetailsFragment.newInstance(note), "NoteDetailsFragment")
-                    .addToBackStack(null)
-                    .commit();
-        } else {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, NoteDetailsFragment.newInstance(note), "NoteDetailsFragment")
-                    .addToBackStack(null)
-                    .commit();
-        }
     }
 
     @Override
