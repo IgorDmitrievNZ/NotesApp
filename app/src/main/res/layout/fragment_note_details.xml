@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_padding"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text="@string/note_number_1" />
+        tools:text="1.Title" />
 
     <TextView
         android:id="@+id/note_description"
         android:layout_width="match_parent"
         android:layout_margin="@dimen/default_padding"
         android:layout_height="wrap_content"
-        tools:text="@string/descrription_1" />
+        tools:text="Description of the note" />
 
 </LinearLayout>
