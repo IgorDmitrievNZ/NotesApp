@@ -29,7 +29,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container"
-            android:name="com.example.android.notesapp.ui.AuthFragment"
+            android:name="com.example.android.notesapp.ui.list.NotesListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:background="@color/design_default_color_error"

@@ -25,6 +25,7 @@ import com.example.android.notesapp.domain.MockDeviceNotesRepository;
 import com.example.android.notesapp.domain.Note;
 import com.example.android.notesapp.ui.Router;
 import com.example.android.notesapp.ui.RouterHolder;
+import com.example.android.notesapp.ui.dialogs.AlertDialogFragment;
 import com.example.android.notesapp.ui.edit.EditNoteFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -183,11 +184,16 @@ public class NotesListFragment extends Fragment implements NotesListView {
         menuInflater.inflate(R.menu.notes_list_context, menu);
     }
 
+    private void showAlertDialogFragment() {
+        new AlertDialogFragment(presenter, selectedNote).show(getChildFragmentManager(), "AlertDialogFragment");
+    }
+
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_delete_one) {
-            presenter.removeNote(selectedNote);
 
+        if (item.getItemId() == R.id.action_delete_one) {
+
+            showAlertDialogFragment();
             return true;
         }
         if (item.getItemId() == R.id.action_update) {
