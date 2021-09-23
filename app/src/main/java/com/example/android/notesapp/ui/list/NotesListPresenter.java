@@ -43,6 +43,7 @@ public class NotesListPresenter {
     }
 
     public void removeNote(Note selectedNote) {
+
         view.showProgress();
         repository.removeNote(selectedNote, new CallBack<Void>() {
             @Override

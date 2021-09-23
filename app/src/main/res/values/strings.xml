@@ -15,4 +15,8 @@
     <string name="delete_one">Delete current note</string>
     <string name="update">Update</string>
     <string name="save_btn">Save</string>
+    <string name="alert_dialog_title">Do you want to delete note?</string>
+    <string name="alert_dialog_message">Press OK to confirm deletion</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel_btn">Cancel</string>
 </resources>
