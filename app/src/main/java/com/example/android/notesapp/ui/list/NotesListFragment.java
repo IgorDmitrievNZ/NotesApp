@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.notesapp.R;
-import com.example.android.notesapp.domain.DeviceNotesRepository;
+import com.example.android.notesapp.domain.MockDeviceNotesRepository;
 import com.example.android.notesapp.domain.Note;
 import com.example.android.notesapp.ui.Router;
 import com.example.android.notesapp.ui.RouterHolder;
@@ -61,7 +61,7 @@ public class NotesListFragment extends Fragment implements NotesListView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        presenter = new NotesListPresenter(this, new DeviceNotesRepository());
+        presenter = new NotesListPresenter(this, MockDeviceNotesRepository.NOTES_REPOSITORY);
 
         adapter = new NotesAdapter(this);
 

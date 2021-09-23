@@ -8,12 +8,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class DeviceNotesRepository implements NotesRepository {
+public class MockDeviceNotesRepository implements NotesRepository {
 
+    public static final NotesRepository NOTES_REPOSITORY = new FireStoreNotesRepository();
     private final ArrayList<Note> res = new ArrayList<>();
     private Handler handler = new Handler(Looper.getMainLooper());
 
-    public DeviceNotesRepository() {
+    public MockDeviceNotesRepository() {
         res.add(new Note("id1", "Title 1", "https://images.freeimages.com/images/large-previews/241/night-fog-1521028.jpg", new Date()));
         res.add(new Note("id2", "Title 2", "https://images.freeimages.com/images/large-previews/10f/autumn-1-1382513.jpg", new Date()));
         res.add(new Note("id3", "Title 3", "https://images.freeimages.com/images/large-previews/bfd/clouds-1371838.jpg", new Date()));
